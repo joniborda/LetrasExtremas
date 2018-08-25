@@ -15,9 +15,7 @@ public class Archivo {
 	public Archivo(String name) {
 		this.name = name;
 		this.contenido = "";
-
-		InputStream entradaBytes = ClassLoader.class.getResourceAsStream(this.name);
-
+		InputStream entradaBytes = ClassLoader.class.getResourceAsStream("/data/" + this.name);
 		this.lector = new BufferedReader(new InputStreamReader(entradaBytes));
 
 	}
