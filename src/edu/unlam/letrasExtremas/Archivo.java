@@ -30,17 +30,20 @@ public class Archivo {
 			e.printStackTrace();
 		} finally {
 			try {
-				if (this.entradaBytes != null) {
-					this.entradaBytes.close();
-				}
-				if (this.lector != null) {
+				// significa fin de archivo
+				if (linea == null) {
 					this.lector.close();
+					this.entradaBytes.close();
 				}
 			} catch (IOException ex) {
 				ex.printStackTrace();
 			}
 		}
 		return null;
+	}
+
+	public void comienzo() throws IOException {
+		this.lector.mark(0);
 	}
 
 	/**
@@ -50,8 +53,37 @@ public class Archivo {
 	 * 
 	 * @return Si es igual
 	 */
-	public boolean equal(Archivo otro) {
-		return true;
-	}
+	public boolean equals(Object obj) {
+		try {
+			Archivo otro = (Archivo) obj;
 
+			this.comienzo();
+			otro.comienzo();
+
+			String cadena1 = this.lector.readLine();
+			String cadena2 = otro.lector.readLine();
+			boolean iguales = true;
+
+			while ((cadena1 != null) && (cadena2 != null) && iguales) {
+
+				if (!cadena1.equals(cadena2)) {
+					iguales = false;
+				}
+
+				cadena1 = this.lector.readLine();
+				cadena2 = otro.lector.readLine();
+			}
+
+			this.lector.close();
+			otro.lector.close();
+
+			if ((iguales) && (cadena1 == null) && (cadena2 == null)) {
+				return true;
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		return false;
+	}
 }
