@@ -6,7 +6,8 @@ public class LetrasExtremas {
 
 	private Integer n = 0;
 	private ArrayList<String> palabras;
-	private int matLetras[][] = new int[2][25];
+	private static final int CANTIDAD_LETRAS = 26;
+	private int matLetras[][] = new int[2][CANTIDAD_LETRAS];
 
 	private Archivo archivo;
 
@@ -14,6 +15,7 @@ public class LetrasExtremas {
 		this.archivo = new Archivo(ruta_archivo);
 		this.palabras = new ArrayList<String>();
 		this.iniciar();
+		this.contarLetrasExtremas();
 	}
 	public void iniciar() {
 		this.n = Integer.parseInt(this.archivo.leerSiguienteLinea());
@@ -34,26 +36,31 @@ public class LetrasExtremas {
 			 * me queden ordenadas en mi matriz en la segunda fila (fila 1)
 			 * guardo la cantidad de apariciones de todas las letras
 			 */
-			// TODO: ver que pasa con la ñ
+			// TODO: ver que pasa con la ñ es 164
 			// primer letra de la palabra leida
-			if (this.matLetras[0][(int) palabra.charAt(0) - 97] != 0) {
-				// si aún no hay una letra cargada guardo la primera
-				this.matLetras[0][(int) palabra.charAt(0) - 97] = (int) palabra.charAt(0);
+			int primera_letra = (int) palabra.charAt(0) - 97;
+			if (primera_letra == 67) {
+				primera_letra -= 42; // la ñ es 164 - 97 - 42 = 25
 			}
 
-			this.matLetras[1][(int) palabra.charAt(0) - 97]++;
+			if (this.matLetras[0][primera_letra] != 0) {
+				// si aún no hay una letra cargada guardo la primera
+				this.matLetras[0][primera_letra] = (int) palabra.charAt(0);
+			}
+
+			this.matLetras[1][primera_letra]++;
 
 			// ultima letra de la palabra leida
-			if (this.matLetras[0][(int) palabra.charAt(palabra.length()) - 97] != 0) {
-				this.matLetras[0][(int) palabra.charAt(palabra.length()) - 97] = (int) palabra.charAt(palabra.length());
+			int ultima_letra = (int) palabra.charAt(palabra.length() - 1) - 97;
+			if (this.matLetras[0][ultima_letra] != 0) {
+				this.matLetras[0][ultima_letra] = (int) palabra.charAt(palabra.length() - 1);
 			}
 
-			this.matLetras[1][(int) palabra.charAt(palabra.length()) - 97]++;
-
+			this.matLetras[1][ultima_letra]++;
 		}
-
-		for (int i = 0; i < this.n; i++) {
-
+		for (int i = 0; i < CANTIDAD_LETRAS; i++) {
+			System.out.println(this.matLetras[1][i]);
+			System.out.println(this.matLetras[1][i]);
 		}
 	}
 }
