@@ -43,7 +43,7 @@ public class LetrasExtremas {
 				primera_letra -= 42; // la ñ es 164 - 97 - 42 = 25
 			}
 
-			if (this.matLetras[0][primera_letra] != 0) {
+			if (this.matLetras[0][primera_letra] == 0) {
 				// si aún no hay una letra cargada guardo la primera
 				this.matLetras[0][primera_letra] = (int) palabra.charAt(0);
 			}
@@ -52,14 +52,14 @@ public class LetrasExtremas {
 
 			// ultima letra de la palabra leida
 			int ultima_letra = (int) palabra.charAt(palabra.length() - 1) - 97;
-			if (this.matLetras[0][ultima_letra] != 0) {
+			if (this.matLetras[0][ultima_letra] == 0) {
 				this.matLetras[0][ultima_letra] = (int) palabra.charAt(palabra.length() - 1);
 			}
 
 			this.matLetras[1][ultima_letra]++;
 		}
 		for (int i = 0; i < CANTIDAD_LETRAS; i++) {
-			System.out.println(this.matLetras[1][i]);
+			System.out.println(this.matLetras[0][i]);
 			System.out.println(this.matLetras[1][i]);
 		}
 	}
