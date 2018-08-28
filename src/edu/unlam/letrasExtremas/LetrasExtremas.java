@@ -9,12 +9,11 @@ public class LetrasExtremas {
 	private int matLetras[][] = new int[2][25];
 	private ArrayList<Character> letrasGanadoras;
 	private ArrayList<String> palabrasGanadoras;
-	//private ArrayList<Letra> letras;
 
 	private Archivo archivo;
 
-	public LetrasExtremas(String ruta_archivo) {
-		this.archivo = new Archivo(ruta_archivo);
+	public LetrasExtremas(String path) {
+		this.archivo = new Archivo(path, "EXTREMAS.IN");
 		this.palabras = new ArrayList<String>();
 		this.iniciar();
 	}
@@ -93,6 +92,7 @@ public class LetrasExtremas {
 				}
 			}
 		}
+		
 
 
 	}

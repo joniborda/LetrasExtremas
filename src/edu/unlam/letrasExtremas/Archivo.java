@@ -1,23 +1,25 @@
 package edu.unlam.letrasExtremas;
 
 import java.io.BufferedReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.util.ArrayList;
 
 public class Archivo {
-
+	
+	public String path;
 	public String name;
-	public String contenido;
 	private BufferedReader entradaBytes;
 	private BufferedReader lector;
 
-	public Archivo(String name) {
+	public Archivo(String path, String name) {
+		this.path = path;
 		this.name = name;
-		this.contenido = "";
-		InputStream entradaBytes = ClassLoader.class.getResourceAsStream(this.name);
+		InputStream entradaBytes = ClassLoader.class.getResourceAsStream(this.path + this.name);
 		this.lector = new BufferedReader(new InputStreamReader(entradaBytes));
-
 	}
 
 	public String leerSiguienteLinea() {
@@ -86,4 +88,33 @@ public class Archivo {
 
 		return false;
 	}
+	
+	public void imprimirOutput(ArrayList<String> out) {
+		
+		FileWriter fichero = null;
+        PrintWriter pw = null;
+        try
+        {
+            fichero = new FileWriter(this.path + this.name);
+            pw = new PrintWriter(fichero);
+
+
+            //TODO: imprimir
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+           try {
+           // Nuevamente aprovechamos el finally para 
+           // asegurarnos que se cierra el fichero.
+           if (null != fichero)
+              fichero.close();
+           } catch (Exception e2) {
+              e2.printStackTrace();
+           }
+        }
+		
+	}
+	
+	
 }
