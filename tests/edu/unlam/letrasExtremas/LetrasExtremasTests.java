@@ -19,18 +19,23 @@ public class LetrasExtremasTests {
 
 	@Test
 	public void tresLetrasExtremasEmpatan() throws FileNotFoundException {
-		LetrasExtremas le = new LetrasExtremas("EXTREMAS.in");
+		LetrasExtremas le = new LetrasExtremas("EXTREMAS");
 		Archivo a1 = le.contarLetrasExtremas();
 		Archivo a2 = new Archivo(CARPETA_ESPERADA, "EXTREMAS.out");
 		Assert.assertEquals(a2, a1);
 	}
-	@Test
+	
+	/*@Test
 	public void verificacionDeFormato() {
 
-	}
+	}*/
+
 
 	@Test
-	public void laPalabraNoDebeSuperarElMaximoPermitido() {
-
+	public void noDebeRepetirPalabras() throws FileNotFoundException {
+		LetrasExtremas obtenidas = new LetrasExtremas("06_NoRepetirPalabras");
+		Archivo obtenido = obtenidas.contarLetrasExtremas();
+		Archivo esperado = new Archivo(CARPETA_ESPERADA, "06_NoRepetirPalabras.out");
+		Assert.assertEquals(esperado, obtenido);
 	}
 }
