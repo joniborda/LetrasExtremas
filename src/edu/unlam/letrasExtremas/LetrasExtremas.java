@@ -1,5 +1,6 @@
 package edu.unlam.letrasExtremas;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 public class LetrasExtremas {
@@ -14,11 +15,11 @@ public class LetrasExtremas {
 
 	private Archivo archivo;
 
-	public LetrasExtremas(String path) {
-		this.archivo = new Archivo(path, "EXTREMAS.IN");
+	public LetrasExtremas(String name) throws FileNotFoundException {
+		this.archivo = new Archivo(LetrasExtremasTests.CARPETA_ENTRADA, name);
+		this.archivo.prepararParaLeer();
 		this.palabras = new ArrayList<String>();
 		this.iniciar();
-		this.contarLetrasExtremas();
 	}
 
 	public void iniciar() {
@@ -29,7 +30,7 @@ public class LetrasExtremas {
 		}
 	}
 
-	public void contarLetrasExtremas() {
+	public Archivo contarLetrasExtremas() {
 		String palabra = null;
 
 		for (int i = 0; i < this.n; i++) {
@@ -86,6 +87,8 @@ public class LetrasExtremas {
 		for (int i = 0; i < this.palabrasGanadoras.size(); i++) {
 			System.out.println(this.palabrasGanadoras.get(i));
 		}
-
+		Archivo archivoOut = new Archivo(LetrasExtremasTests.CARPETA_OBTENIDA, "EXTRAMAS.out");
+		archivoOut.imprimirOutput(letrasGanadoras, palabrasGanadoras);
+		return archivoOut;
 	}
 }

@@ -1,22 +1,29 @@
 package edu.unlam.letrasExtremas;
 
+import java.io.FileNotFoundException;
+
 import org.junit.Assert;
 import org.junit.Test;
 
 public class LetrasExtremasTests {
 
+	public static final String CARPETA_ENTRADA = "resource/prueba/entrada/";
+	public static final String CARPETA_OBTENIDA = "resource/prueba/obtenida/";
+	public static final String CARPETA_ESPERADA = "resource/prueba/esperada/";
 	@Test
-	public void archivosIguales() {
-		Archivo a1 = new Archivo("/prueba/entrada/", "EXTREMAS.in");
-		Archivo a2 = new Archivo("/prueba/entrada/", "EXTREMAS.in");
+	public void archivosIguales() throws FileNotFoundException {
+		Archivo a1 = new Archivo(CARPETA_ENTRADA, "EXTREMAS.in");
+		Archivo a2 = new Archivo(CARPETA_ENTRADA, "EXTREMAS.in");
 		Assert.assertEquals(a2, a1);
 	}
 
 	@Test
-	public void tresLetrasExtremasEmpatan() {
-		LetrasExtremas le = new LetrasExtremas("/prueba/entrada/");
+	public void tresLetrasExtremasEmpatan() throws FileNotFoundException {
+		LetrasExtremas le = new LetrasExtremas("EXTREMAS.in");
+		Archivo a1 = le.contarLetrasExtremas();
+		Archivo a2 = new Archivo(CARPETA_ESPERADA, "EXTREMAS.out");
+		Assert.assertEquals(a2, a1);
 	}
-
 	@Test
 	public void verificacionDeFormato() {
 
