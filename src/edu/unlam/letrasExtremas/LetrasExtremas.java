@@ -64,15 +64,14 @@ public class LetrasExtremas {
 			}
 		}
 
+		
 		// A partir de las letras, guardar las palabras ganadoras
 		boolean esPalabraGanadora;
 		for (int i = 0; i < this.palabras.size(); i++) {
 			palabra = this.palabras.get(i);
-
 			int j = 0;
-			esPalabraGanadora = false;
-			while (!esPalabraGanadora && j < this.letrasGanadoras.size()) {
-
+			while (j < this.letrasGanadoras.size()) {
+				
 				//Primero tengo que verificar que esa palabra no se encuentre ya cargada
 				//Luego la agrego
 				if (palabra.charAt(0) == this.letrasGanadoras.get(j)
@@ -84,19 +83,20 @@ public class LetrasExtremas {
 					
 					if(k == this.palabrasGanadoras.size() || this.palabrasGanadoras.isEmpty())	//si K llegó al size es porque no está repetida
 						this.palabrasGanadoras.add(palabra);
-
 				}
+				
 				j++;
 			}
 		}
 
-		for (int i = 0; i < this.letrasGanadoras.size(); i++) {
+		/*for (int i = 0; i < this.letrasGanadoras.size(); i++) {
 			System.out.println(this.letrasGanadoras.get(i));
 		}
 
 		for (int i = 0; i < this.palabrasGanadoras.size(); i++) {
 			System.out.println(this.palabrasGanadoras.get(i));
-		}
+		}*/
+		
 		Archivo archivoOut = new Archivo(LetrasExtremasTests.CARPETA_OBTENIDA, this.name + ".out");
 		archivoOut.imprimirOutput(letrasGanadoras, palabrasGanadoras);
 		return archivoOut;
