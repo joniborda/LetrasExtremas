@@ -38,4 +38,28 @@ public class LetrasExtremasTests {
 		Archivo esperado = new Archivo(CARPETA_ESPERADA, "06_NoRepetirPalabras.out");
 		Assert.assertEquals(esperado, obtenido);
 	}
+	
+	@Test
+	public void casoFatiga() throws FileNotFoundException {
+		LetrasExtremas obtenidas = new LetrasExtremas("09_CasoFatiga");
+		Archivo obtenido = obtenidas.contarLetrasExtremas();
+		Archivo esperado = new Archivo(CARPETA_ESPERADA, "09_CasoFatiga.out");
+		Assert.assertEquals(esperado, obtenido);
+	}
+	
+	@Test
+	public void repeticionLetraExtrema() throws FileNotFoundException {
+		LetrasExtremas obtenidas = new LetrasExtremas("04_RepeticionLetraExtrema");
+		Archivo obtenido = obtenidas.contarLetrasExtremas();
+		Archivo esperado = new Archivo(CARPETA_ESPERADA, "04_RepeticionLetraExtrema.out");
+		Assert.assertEquals(esperado, obtenido);
+	}
+	
+	@Test
+	public void conteoLetraExtremaUnica() throws FileNotFoundException {
+		LetrasExtremas obtenidas = new LetrasExtremas("05_ConteoLetraExtremaUnica");
+		Archivo obtenido = obtenidas.contarLetrasExtremas();
+		Archivo esperado = new Archivo(CARPETA_ESPERADA, "05_ConteoLetraExtremaUnica.out");
+		Assert.assertEquals(esperado, obtenido);
+	}
 }

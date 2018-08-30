@@ -92,9 +92,10 @@ public class Archivo {
 			pw = new PrintWriter(fichero);
 
 			for (int i = 0; i < letrasGanadoras.size(); i++) {
-				pw.println(letrasGanadoras.get(i));
+				pw.print(letrasGanadoras.get(i) + "\t");
 			}
-
+			pw.println();
+			
 			for (int i = 0; i < palabrasGanadoras.size(); i++) {
 				pw.println(palabrasGanadoras.get(i));
 			}

@@ -8,7 +8,7 @@ public class LetrasExtremas {
 	private Integer n = 0;
 	private String name;
 	private ArrayList<String> palabras;
-	private static final int CANTIDAD_LETRAS = 25;
+	private static final int CANTIDAD_LETRAS = 26;
 	private static final int ASCII_INICIAL = 97;
 	private int vecLetras[] = new int[CANTIDAD_LETRAS];
 	private ArrayList<Character> letrasGanadoras;
